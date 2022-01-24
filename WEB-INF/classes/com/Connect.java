@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.*;
 import java.io.*;
 
-public class Connect
+public class Connect extends ExceptionHandler
 {
     public static Statement statement = null;
     public static Connection connection;
@@ -42,13 +42,7 @@ public class Connect
 		}
 		catch(Exception e)
 		{
-			StringWriter writer = new StringWriter();
-			PrintWriter printWriter = new PrintWriter( writer );
-			e.printStackTrace( printWriter );
-			printWriter.flush();
-			String stackTrace = writer.toString();
-			Option+="Error : "+stackTrace;
-			System.out.println("Error : "+e);
+			Option = printStackTrace(e);
 		}
 		return Option;
 	}
@@ -74,13 +68,7 @@ public class Connect
 		}
 		catch(Exception e)
 		{
-			StringWriter writer = new StringWriter();
-			PrintWriter printWriter = new PrintWriter( writer );
-			e.printStackTrace( printWriter );
-			printWriter.flush();
-			String stackTrace = writer.toString();
-			Option+="Error : "+stackTrace;
-			System.out.println("Error : "+e);
+			Option = printStackTrace(e);
 		}
 		return Option;
 	}

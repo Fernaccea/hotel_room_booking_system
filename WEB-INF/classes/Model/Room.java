@@ -38,13 +38,7 @@ public class Room extends Connect
 		}
 		catch(Exception e)
 		{
-			StringWriter writer = new StringWriter();
-			PrintWriter printWriter = new PrintWriter( writer );
-			e.printStackTrace( printWriter );
-			printWriter.flush();
-			String stackTrace = writer.toString();
-			error+="Error : "+stackTrace;
-			System.out.println(" Error : "+ e.toString());
+			error = printStackTrace(e);
 		}
 		return error;
 	}
@@ -122,13 +116,7 @@ public class Room extends Connect
 		}
 		catch(Exception e)
 		{
-			StringWriter writer = new StringWriter();
-			PrintWriter printWriter = new PrintWriter( writer );
-			e.printStackTrace( printWriter );
-			printWriter.flush();
-			String stackTrace = writer.toString();
-			error+="Error : "+stackTrace;
-			System.out.println(" Error : "+ e.toString());
+			error = printStackTrace(e);
 		}
 		return error;
 	}

@@ -68,13 +68,7 @@ public class Connect
 		}
 		catch(Exception e)
 		{
-			StringWriter writer = new StringWriter();
-			PrintWriter printWriter = new PrintWriter( writer );
-			e.printStackTrace( printWriter );
-			printWriter.flush();
-			String stackTrace = writer.toString();
-			Option+="Error : "+stackTrace;
-			System.out.println("Error : "+e);
+			Option = printStackTrace(e);
 		}
 		return Option;
 	}
