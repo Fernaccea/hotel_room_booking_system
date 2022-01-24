@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Login extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+
 	public Login()
     {
 		Connect.connect_mysql();
     }
-	//////////////////Function for Update the airport////////////////////////
+
 	public boolean changePassword(String old_password,String new_password, int login_id)
 	{		
 		String SQL;
@@ -43,7 +43,7 @@ public class Login extends Connect
 			return false;
 		return true;
 	}
-	//////////////////Function for geting the Single Airport Details//////////	
+
     public boolean checkLogin(String login_user,String login_password)
 	{
         int count=0;
@@ -62,7 +62,7 @@ public class Login extends Connect
 			return false;
         return true;
     }
-	//////////////////Function for getting Login Details//////////	
+
     public HashMap getLoginDetails(String login_user,String login_password)
 	{
         HashMap resultsArray = new HashMap();
@@ -94,7 +94,7 @@ public class Login extends Connect
        	 }
         return resultsArray;
     }	
-    //////////////////Function for getting Login Details//////////	
+
     public int checkUsernameExits(String login_user, int type)
 	{
         HashMap resultsArray = new HashMap();

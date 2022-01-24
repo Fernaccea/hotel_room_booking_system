@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Category extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+
 	public Category()
     {
 		Connect.connect_mysql();
     }
-	//////////Save User Details /////
+
 	public String saveCategory(HashMap categoryData)
 	{
 		String SQL = "INSERT INTO `category` (`category_name`, `category_description`) VALUES (?, ?);";
@@ -35,7 +35,7 @@ public class Category extends Connect
 		}
 		return error;
 	}
-	//////////////////Function for getting Users Details//////////	
+
     public HashMap getCategoryDetails(int category_id)
 	{
         HashMap results = new HashMap();
@@ -65,7 +65,7 @@ public class Category extends Connect
        	 }
         return results;
     }
-    /// Update the Category ////
+
 	public String updateCategory(HashMap categoryData)
 	{
 		String SQL = "UPDATE `category` SET `category_name` = ?, `category_description` = ? WHERE `category_id` = ?;";
@@ -92,7 +92,6 @@ public class Category extends Connect
 		return error;
 	}
 	
-	////////////////Function for getting all the Airport Details////////////////////  
     public ArrayList getAllCategory()
 	{
 		String SQL = "SELECT * FROM `category`";

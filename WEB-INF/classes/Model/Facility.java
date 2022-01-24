@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Facility extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+	
 	public Facility()
     {
 		Connect.connect_mysql();
     }
-	//////////Save User Details /////
+
 	public String saveFacility(HashMap facilityData)
 	{
 		String SQL = "INSERT INTO `facility` (`facility_name`, `facility_description`) VALUES (?, ?);";
@@ -35,7 +35,7 @@ public class Facility extends Connect
 		}
 		return error;
 	}
-	//////////////////Function for getting Users Details//////////	
+	
     public HashMap getFacilityDetails(int facility_id)
 	{
         HashMap results = new HashMap();
@@ -65,7 +65,7 @@ public class Facility extends Connect
        	 }
         return results;
     }
-    /// Update the Facility ////
+
 	public String updateFacility(HashMap facilityData)
 	{
 		String SQL = "UPDATE `facility` SET `facility_name` = ?, `facility_description` = ? WHERE `facility_id` = ?;";
@@ -91,8 +91,7 @@ public class Facility extends Connect
 		}
 		return error;
 	}
-	
-	////////////////Function for getting all the Airport Details////////////////////  
+	  
     public ArrayList getAllFacility()
 	{
 		String SQL = "SELECT * FROM `facility`";

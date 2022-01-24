@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Employee extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+
     public Employee()
     {
 		Connect.connect_mysql();
     }
-    //////////Save User Details /////
+
     public String saveEmployee(HashMap employeeData)
     {
 
@@ -79,7 +79,6 @@ public class Employee extends Connect
 	return error;
     }
 	
-    //////////////////Function for getting Users Details//////////	
     public HashMap getEmployeeDetails(int employee_id)
 	{
         HashMap resultsArray = new HashMap();
@@ -187,53 +186,97 @@ public class Employee extends Connect
 		return true;
 	}
 
-	/////Function for Getting the List////////////
 	public String getStateOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("state","state_id","state_name","state_id,state_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("state");
+		db.setIdColumn("state_id");
+		db.setValueColumn("state_name");
+		db.setColumns("state_id,state_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }
-	/////Function for Getting the List////////////
+
 	public String getEmployeeOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("employee","employee_id","employee_id","employee_id,employee_id",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("employee");
+		db.setIdColumn("employee_id");
+		db.setValueColumn("employee_id");
+		db.setColumns("employee_id,employee_id");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }
-    /////Function for Getting the List////////////
+
 	public String getRoleOption(Integer SelID)
-    {
+    {   	
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("roles","role_id","role_title","role_id,role_title",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("roles");
+		db.setIdColumn("role_id");
+		db.setValueColumn("role_title");
+		db.setColumns("role_id,role_title");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }
-	/////Function for Getting the List////////////
+
 	public String getCountryOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("country","country_id","country_name","country_id,country_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("country");
+		db.setIdColumn("country_id");
+		db.setValueColumn("country_name");
+		db.setColumns("country_id,country_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }	
 	
-	/////Function for Getting the List////////////
 	public String getSalutionOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("salutions","sl_id","sl_name","sl_id,sl_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("salutions");
+		db.setIdColumn("sl_id");
+		db.setValueColumn("sl_name");
+		db.setColumns("sl_id,sl_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }	
     
-	/////Function for Getting the List////////////
 	public String getStatusOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("status","status_id","status_name","status_id,status_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("status");
+		db.setIdColumn("status_id");
+		db.setValueColumn("status_name");
+		db.setColumns("status_id,status_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }
-    
-    /////Function for Getting the List////////////
+
 	public String getDepartmentOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("department","dept_id","dept_name","dept_id,dept_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("department");
+		db.setIdColumn("dept_id");
+		db.setValueColumn("dept_name");
+		db.setColumns("dept_id,dept_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }
     
-	////////////////Function for getting all the Airport Details////////////////////  
     public ArrayList getAllEmployee(String managerID)
 	{
 		int count=0;

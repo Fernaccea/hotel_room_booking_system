@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Book extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+
 	public Book()
     {
 		Connect.connect_mysql();
     }
-	//////////Save User Details /////
+
 	public String saveBook(HashMap bookData)
 	{
 		String SQL = "INSERT INTO `book` (`book_room_id`, `book_user_id`, `book_date`, `book_from_date`, `book_to_date`, `book_no_rooms`, `book_no_persons`, `book_no_childs`, `book_name`, `book_mobile`, `book_email`, `book_total_amount`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -45,7 +45,7 @@ public class Book extends Connect
 		}
 		return error;
 	}
-	//////////////////Function for getting Users Details//////////	
+
     public HashMap getBookDetails(int book_id)
 	{
         HashMap results = new HashMap();
@@ -85,7 +85,7 @@ public class Book extends Connect
        	 }
         return results;
     }
-    /// Update the Book ////
+
 	public String updateBook(HashMap bookData)
 	{
 		String SQL = "UPDATE `book` SET `book_room_id` = ?, `book_user_id` = ?, `book_date` = ?, `book_from_date` = ?, `book_to_date` = ?, `book_no_rooms` = ?, `book_no_persons` = ?, `book_no_childs` = ?, `book_name` = ?, `book_mobile` = ?, `book_email` = ?, `book_total_amount` = ? WHERE ``book_id` = ?;";
@@ -122,7 +122,6 @@ public class Book extends Connect
 		return error;
 	}
 	
-	////////////////Function for getting all the Airport Details////////////////////  
     public ArrayList getAllBook(String user_id)
 	{
 		String SQL;

@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Room extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+
 	public Room()
     {
 		Connect.connect_mysql();
     }
-	//////////Save User Details /////
+
 	public String saveRoom(HashMap roomData)
 	{
 		String SQL = "INSERT INTO `room` (`room_category_id`, `room_facility_id`, `room_name`, `room_no_of_beds`, `room_max_adult`, `room_max_child`, `room_fare`, `room_description`, `room_image`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -42,7 +42,7 @@ public class Room extends Connect
 		}
 		return error;
 	}
-	//////////////////Function for getting Users Details//////////	
+
     public HashMap getRoomDetails(int room_id)
 	{
         HashMap results = new HashMap();
@@ -87,7 +87,7 @@ public class Room extends Connect
        	 }
         return results;
     }
-    /// Update the Room ////
+
 	public String updateRoom(HashMap roomData)
 	{
 		String SQL = "UPDATE `room` SET `room_category_id` = ?, `room_facility_id` = ?, `room_name` = ?, `room_no_of_beds` = ?, `room_max_adult` = ?, `room_max_child` = ?, `room_fare` = ?, `room_description` = ?, room_image = ? WHERE `room_id` = ?;";
@@ -120,8 +120,7 @@ public class Room extends Connect
 		}
 		return error;
 	}
-	
-	////////////////Function for getting all the Airport Details////////////////////  
+	 
     public ArrayList getAllRoom()
 	{
 		String SQL = "SELECT * FROM `room`,`category` WHERE room_category_id = category_id";
@@ -156,15 +155,32 @@ public class Room extends Connect
         }
         return resultArray;
     }
-	/////Function for Getting the List////////////
+
 	public String getCategoryOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("category","category_id","category_name","category_id,category_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("category");
+		db.setIdColumn("category_id");
+		db.setValueColumn("category_name");
+		db.setColumns("category_id,category_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
+    	
+    	
     }
-	/////Function for Getting the List////////////
+
 	public String getFacilityOption(String SelID)
     {
-    	return Connect.getChekboxOptionList("facility","facility_id","facility_name","facility_id,facility_name",SelID,"1","room_facility_id");
+		DbHandler db = new DBHandler ();
+		db.setTableName("facility");
+		db.setIdColumn("facility_id");
+		db.setValueColumn("facility_name");
+		db.setColumns("facility_id,facility_name");
+		db.setSelID(SelID);
+		db.setConn("1");
+		db.setInputName("room_facility_id");
+    	return Connect.getChekboxOptionList(db);
     }
 }

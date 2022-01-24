@@ -7,12 +7,12 @@ import java.io.*;
 
 public class Customer extends Connect
 {
-    /////Function for connect to the MySQL Server Database////////////
+
 	public Customer()
     {
 		Connect.connect_mysql();
     }
-	//////////Save User Details /////
+
 	public String saveCustomer(HashMap customerData)
 	{
 		String SQL = "INSERT INTO `customer` (`customer_name`, `customer_mobile`, `customer_email`, `customer_password`, `customer_address`, `customer_city`, `customer_state`, `customer_pincode`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
@@ -41,7 +41,7 @@ public class Customer extends Connect
 		}
 		return error;
 	}
-	//////////////////Function for getting Users Details//////////	
+
     public HashMap getCustomerDetails(int customer_id)
 	{
         HashMap results = new HashMap();
@@ -83,7 +83,7 @@ public class Customer extends Connect
        	 }
         return results;
     }
-    /// Update the Customer ////
+    
 	public String updateCustomer(HashMap customerData)
 	{
 		String SQL = "UPDATE `customer` SET `customer_name` = ?, `customer_mobile` = ?, `customer_email` = ?, `customer_password` = ?, `customer_address` = ?, `customer_city` = ?, `customer_state` = ?, `customer_pincode` = ? WHERE `customer_id` = ?;";
@@ -113,8 +113,7 @@ public class Customer extends Connect
 		}
 		return error;
 	}
-	
-	////////////////Function for getting all the Airport Details////////////////////  
+	 
     public ArrayList getAllCustomer()
 	{
 		String SQL = "SELECT * FROM `customer`";
@@ -146,13 +145,20 @@ public class Customer extends Connect
         }
         return resultArray;
     }
-	/////Function for Getting the List////////////
+
 	public String getStateOption(Integer SelID)
     {
 		int selectedID = SelID.intValue();
-    	return Connect.getOptionList("state","state_id","state_name","state_id,state_name",selectedID,"1");
+		DbHandler db = new DBHandler ();
+		db.setTableName("state");
+		db.setIdColumn("state_id");
+		db.setValueColumn("state_name");
+		db.setColumns("state_id,state_name");
+		db.setSelID(selectedID);
+		db.setConn("1");
+    	return Connect.getOptionList(db);
     }
-    //////////////////Function for getting Login Details//////////	
+
     public HashMap getLoginDetails(String login_user,String login_password)
 	{
         HashMap resultsArray = new HashMap();
